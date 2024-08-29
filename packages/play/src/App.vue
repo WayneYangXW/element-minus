@@ -2,13 +2,12 @@
  * @Descripttion: 
  * @Author: Yxw
  * @Date: 2024-08-19 16:24:18
- * @LastEditTime: 2024-08-28 16:35:05
+ * @LastEditTime: 2024-08-29 00:44:36
 -->
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <er-button />
+  <em-button type="primary" size="default">test button</em-button>
 </template>
 
 <style scoped>

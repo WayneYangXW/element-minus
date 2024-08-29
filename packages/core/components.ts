@@ -1,4 +1,4 @@
-import { ErButton } from "@element-minus/components";
+import { EmButton } from "@element-minus/components";
 import type { Plugin } from "vue";
 
-export default [ErButton] as Plugin[];
+export default [EmButton] as Plugin[];

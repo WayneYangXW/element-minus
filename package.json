@@ -8,7 +8,7 @@
     "dev": "pnpm --filter @element-minus/play dev",
     "docs:dev": "pnpm --filter @element-minus/docs dev",
     "docs:build": "pnpm --filter @element-minus/docs build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "pnpm --filter @element-minus/components test"
   },
   "keywords": [],
   "author": "",
