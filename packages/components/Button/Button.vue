@@ -1,17 +1,30 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { ButtonProps } from "./types";
+import type { ButtonProps, ButtonEmits, ButtonInstance } from "./types";
+import { throttle } from "lodash-es";
 defineOptions({
   name: "EmButton",
 });
 const props = withDefaults(defineProps<ButtonProps>(), {
   tag: "button",
   nativeType: "button",
+  useThrottle: true,
+  throttleDuration: 500,
 });
 
 const slots = defineSlots();
 
 const _ref = ref<HTMLButtonElement>();
+
+defineExpose<ButtonInstance>({
+  ref: _ref,
+});
+
+const emits = defineEmits<ButtonEmits>();
+
+const handleBtnClick = (e: MouseEvent) => emits("click", e);
+
+const handleBtnClickThrottle = throttle(handleBtnClick, props.throttleDuration);
 </script>
 
 <template>
@@ -33,7 +46,13 @@ const _ref = ref<HTMLButtonElement>();
     :style="{
       ...(loading ? { 'pointer-events': 'none', cursor: 'not-allowed' } : {}),
     }"
+    @click="
+    (e: MouseEvent) => useThrottle ? handleBtnClickThrottle(e) : handleBtnClick(e)"
   >
     <slot></slot>
   </component>
 </template>
+
+<style scoped>
+@import "./style.css";
+</style>

@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm --filter @element-minus/play dev",
+    "story": "pnpm --filter @element-minus/play storybook",
     "docs:dev": "pnpm --filter @element-minus/docs dev",
     "docs:build": "pnpm --filter @element-minus/docs build",
     "test": "pnpm --filter @element-minus/components test"
