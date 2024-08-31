@@ -1,5 +1,5 @@
 import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
-import { fn } from '@storybook/test';
+import { fn, userEvent, within, expect } from '@storybook/test';
 
 import { EmButton } from 'element-minus';
 
@@ -65,6 +65,16 @@ export const Default: Story & { args: { content: string} } = {
       control: { type: "text" },
     },
   },
+  args: {
+    type: "primary",
+    content: "Button",
+    useThrottle: true,
+    loading: false,
+    icon: "search",
+    circle: false,
+    round: true,
+    autofocus: true
+  },
   render: (args) => ({
     components: { EmButton },
     setup() {
@@ -74,11 +84,14 @@ export const Default: Story & { args: { content: string} } = {
       `<em-button v-bind="args">{{ args.content }}</em-button>`
     )
   }),
-  args: {
-    type: "primary",
-    content: "Button",
-    useThrottle: true
-  }
+
+  play: async ({ canvasElement, args, step }) => {
+    const canvas = within(canvasElement);
+    await step("click btn", async () => {
+      await userEvent.click(canvas.getByRole("button"));
+    })
+    expect(args.onClick).toHaveBeenCalled();
+  },
 }
 
 export default meta;

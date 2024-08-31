@@ -1,4 +1,4 @@
-import { EmButton } from "@element-minus/components";
+import { EmButton, EmIcon } from "@element-minus/components";
 import type { Plugin } from "vue";
 
-export default [EmButton] as Plugin[];
+export default [EmButton, EmIcon] as Plugin[];

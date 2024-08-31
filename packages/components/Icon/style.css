@@ -1,0 +1,21 @@
+.em-icon {
+    display: inline-block;
+    font-size: 1.5em;
+    line-height: 1;
+    vertical-align: middle;
+}
+.em-icon {
+    --em-icon-color: inherit;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    fill: currentColor;
+    color: var(--em-icon-color);
+    font-size: inherit;
+}
+@each $val in primary, info, success, warning, danger {
+    .em-icon-$(val) {
+        --em-icon-color: var(--em-color-$(val));
+    }
+}
