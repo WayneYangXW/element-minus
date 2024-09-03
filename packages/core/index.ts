@@ -13,5 +13,5 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas);
 const installer = makeInstaller(components);
 
-export * from "@element-minus/components"
+export * from "../components"
 export default installer;
